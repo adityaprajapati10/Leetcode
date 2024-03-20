@@ -11,13 +11,11 @@ class Solution {
         }
         temp2.next = temp;
 
-        ListNode current = list1;
+        temp = list1;
         for (int i = 1; i <= a - 1; i++) {
-            current = current.next;
+            temp = temp.next;
         }
-        
-        current.next = list2;
-        
+        temp.next = list2;
         return list1;
     }
 }
