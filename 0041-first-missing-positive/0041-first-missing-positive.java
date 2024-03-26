@@ -1,7 +1,6 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        Arrays.sort(nums);
-        int n = nums.length;
+        int n=nums.length;
         if(n == 1){
             if(nums[0] == 0 || nums[0] == 1){
                 return nums[0]+1;
@@ -10,15 +9,17 @@ class Solution {
                 return 1;
             }
         }
-        HashMap<Integer , Integer > map = new HashMap<>();
-        for(int i = 0 ; i<n ; i++){
-            map.put(nums[i],1);
-        }  
-         for(int i = 1 ; i<=n ; i++){
-            if(map.containsKey(i)){
-                map.remove(i);
-            }
-            else{
+        int m=n+1;
+        int result[] = new int[n+1];
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]>0 && nums[i]<=n)
+                result[nums[i]]=1;
+        }
+        for(int i=1;i<result.length;i++)
+        {
+            if(result[i]==0)
+            {
                 return i ;
             }
         }
