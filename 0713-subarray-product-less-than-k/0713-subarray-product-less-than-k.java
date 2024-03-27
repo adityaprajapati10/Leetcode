@@ -9,11 +9,9 @@ class Solution {
                 for(int j = i+1 ; j < nums.length ; j++){
                     prod *= nums[j];
                     if(prod < k) count ++;
-                    else{
-                        break;
-                    }
+                    else break;
                 } 
-            }else i++;
+            }
         }
         return count;
     }
