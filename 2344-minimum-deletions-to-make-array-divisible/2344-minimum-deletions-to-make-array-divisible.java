@@ -1,28 +1,26 @@
 class Solution {
+    public int findGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
     public int minOperations(int[] nums, int[] numsDivide) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+        int gcd = numsDivide[0];
+        for (int i = 1; i < numsDivide.length; i++) {
+            gcd = findGCD(gcd, numsDivide[i]);
         }
-        ArrayList<Integer> uniqueNums = new ArrayList<>(map.keySet());
-        Collections.sort(uniqueNums);
-        
+        Arrays.sort(nums);
         int count = 0;
-        for (int num : uniqueNums) {
-            boolean canDivideAll = true;
-            for (int div : numsDivide) {
-                if (div % num != 0) {
-                    canDivideAll = false;
-                    break;
-                }
-            }
-            if (canDivideAll) {
+        for (int num : nums) {
+            if (gcd % num == 0) {
                 return count;
-            } else {
-                count += map.get(num);
             }
+            count++;
         }
-        
+
         return -1;
     }
 }
