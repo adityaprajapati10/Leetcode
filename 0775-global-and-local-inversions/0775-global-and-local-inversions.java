@@ -31,14 +31,14 @@ class Solution {
                 arr[k++] = lSub[i++];
             }else{
                 arr[k++] = rSub[j++];
-                swap += (mid+1) - i;
+                swap += (mid+1) - (l+i);
             }
         }
         while(i<lSub.length){
             arr[k++] = lSub[i++];
         }
-        while(i<rSub.length){
-            arr[k++] = lSub[j++];
+        while(j<rSub.length){
+            arr[k++] = rSub[j++];
         }
         return swap;
     }
