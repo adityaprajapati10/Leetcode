@@ -23,15 +23,16 @@ class Solution {
         }
 
         while(!q.isEmpty()){
-            int maxEl = Integer.MIN_VALUE;
+            List<Integer> list = new ArrayList<>();
             int size = q.size();
             for(int i = 0; i<size ; i++){
                 TreeNode curr = q.poll();
-                maxEl = Math.max(maxEl, curr.val);
+                list.add(curr.val);
                 if(curr.left != null) q.add(curr.left);
                 if (curr.right != null) q.add(curr.right);
             }
-            ans.add(maxEl);
+            Collections.sort(list);
+            ans.add(list.get(list.size()-1));
         }
         return ans;
     }
