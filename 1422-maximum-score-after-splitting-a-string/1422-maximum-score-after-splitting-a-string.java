@@ -1,15 +1,18 @@
 class Solution {
     public int maxScore(String s) {
-        int maxScore = 0 , count_zero = 0 , count_ones = 0;
-        for(int i = 0 ; i < s.length()-1 ; i++){
-            if(s.charAt(i) == '0') count_zero++;
-            count_ones = 0;
-            int j = i+1;
-            while(j < s.length()){
-                if(s.charAt(j) == '1') count_ones++;
-                j++;
+        int maxScore = 0 , countZeros = 0 , countOnes = 0;
+        for(int i = 0 ; i < s.length() ; i++){
+            if(s.charAt(i) == '1'){
+                countOnes++;
             }
-            maxScore = Math.max(maxScore ,(count_ones + count_zero));
+        }
+        for(int i = 0; i<s.length()-1; i++){
+            if(s.charAt(i) == '0'){
+                countZeros++;
+            } else{
+                countOnes--;
+            }
+            maxScore = Math.max(maxScore, countOnes+countZeros);
         }
         return maxScore;
     }
