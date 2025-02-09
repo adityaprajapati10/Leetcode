@@ -1,16 +1,17 @@
 class Solution {
     public long countBadPairs(int[] nums) {
-        long count  = 0;
-        for(int i = 0 ; i<nums.length ; i++){
-            nums[i] = nums[i] - i;
-        }
-        HashMap<Integer , Integer> map = new HashMap<>();
-        for(int i = 0 ; i<nums.length ; i++){
-            count = (long)(count + map.getOrDefault(nums[i] , 0));
-            map.put(nums[i] , map.getOrDefault(nums[i],0)+1);
-        }
-        int n = nums.length;
-        long total = ((long)(n)*(long)(n-1))/(long)2;
-        return total - count;
+        int n=nums.length;
+        long count = 0;
+        HashMap<Integer,Integer> hm=new HashMap<>();
+        for(int i=0;i<n;i++){
+            if(hm.containsKey(nums[i] - i)){
+                count+=(long)hm.get(nums[i] - i);
+                }
+            hm.put(nums[i] - i,hm.getOrDefault(nums[i] - i,0)+1);
+        } 
+        long tot=((long)(n)*(long)(n-1))/(long)2;
+       
+        return tot-(long)count;
     }
 }
+
