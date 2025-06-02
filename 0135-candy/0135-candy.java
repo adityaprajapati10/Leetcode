@@ -11,7 +11,8 @@ class Solution {
         }
         for(int i = ratings.length-2 ; i >= 0 ; i--){
             if(ratings[i] > ratings[i+1]){
-                gift[i] = gift[i+1] + 1;
+                if(gift[i] <= gift[i+1])
+                    gift[i] = gift[i+1] + 1;
             }
         }
         int total = 0;
