@@ -2,12 +2,14 @@ class Solution {
     public int possibleStringCount(String word) {
         int count = 1;
         HashSet<Character> set = new HashSet<>();
-        for(char ch : word.toCharArray()){
+        for(int i =0; i<word.length(); i++){
+            char ch = word.charAt(i);
             if(!set.contains(ch)){
                 set.add(ch);
-            }else{
+            }else if(i !=0 && set.contains(ch) && word.charAt(i-1) == ch){
                 count++;
             }
+            
         }
         return count;
     }
